@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSE Time Example</title>
+</head>
+<body>
+    <h1>Server-Sent Events (SSE) Example</h1>
+    <p>Current Time:</p>
+    <pre id="time">Waiting for updates...</pre>
+
+    <script>
+        // Connect to the SSE endpoint
+        const eventSource = new EventSource("/time");
+
+        // Listen for messages from the server
+        eventSource.onmessage = (event) => {
+            const timeContainer = document.getElementById("time");
+            timeContainer.textContent += `${event.data}\n`; // Append each event as a new line
+        };
+
+        // Handle errors
+        eventSource.onerror = () => {
+            const timeContainer = document.getElementById("time");
+            timeContainer.textContent += "Connection lost. Retrying...\n";
+        };
+    </script>
+</body>
+</html>
