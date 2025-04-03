@@ -32,3 +32,4 @@ jobs:
       - name: Push Docker image
         run: |
           docker push ghcr.io/${{ env.ORG_LC }}/sse_test_app:latest
+        # minor change to trigger build
