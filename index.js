@@ -9,7 +9,7 @@ app.use(express.static("public"));
 // SSE endpoint
 app.get("/time", (req, res) => {
     // Set headers for SSE
-    res.setHeader("Content-Type", "text/event-stream");
+    res.setHeader("Content-Type", "text/event-stream; charset=utf-8");
     res.setHeader("Cache-Control", "no-cache");
     res.setHeader("Connection", "keep-alive");
 
